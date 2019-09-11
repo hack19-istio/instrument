@@ -12,10 +12,7 @@ import java.util.Set;
 public class InstrumentResource {
 
     private String instrumentId;
-    private Instrument instrument = new Instrument("piano_01");
-    /*public InstrumentResource(String instrumentId){
-        this.instrumentId=instrumentId;
-    }*/
+    private Instrument instrument = new Instrument();
 
     @GET
     public Instrument linstrument() {

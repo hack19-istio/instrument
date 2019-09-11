@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: hack-istio
+  name: instrument
+  labels:
+    app: instrument
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: instrument
+  template:
+    metadata:
+      labels:
+        app: instrument
+    spec:
+      containers:
+        - name: instrument
+          image: gregerrag/istio-instrument
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TZ
+              value: Europe/Zurich
+            - name: INSTRUMENT_ID
+              value: "piano_01"

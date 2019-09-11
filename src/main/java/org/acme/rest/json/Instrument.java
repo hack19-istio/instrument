@@ -8,12 +8,9 @@ public class Instrument {
 
 
     public Instrument() {
+        setName(System.getenv("INSTRUMENT_ID"));
     }
 
-    public Instrument(String name) {
-        this.name = name;
-
-    }
 
     public String getName() {
         return name;
