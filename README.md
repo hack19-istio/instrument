@@ -1,15 +1,12 @@
 
-
+# Start lockally
 ./mvnw compile quarkus:dev
 
-curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-      "name": "Red Grapes",
-      "description": "can't eat"}' 'http://localhost:8080/fruits'
-      
+# get command
+curl GET --header 'Content-Type: application/json' --header 'Accept: application/json' http://localhost:8080/instrument
 
-curl PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"name": "Red Grapes","description": "can not eat"}' http://localhost:8080/fruits
-
-http://localhost:8080/instrument
+# set environment variable which will be used in the microservice
+export INSTRUMENT_ID=hupe_02
 
 # Install:
 ## maven build:
@@ -26,9 +23,15 @@ docker push gregerrag/istio-instrument
 
 ## microservices install:
 kubectl apply -f <(istioctl kube-inject -f src/main/docker/deploy.yaml)
-kubectl apply -f <(istioctl kube-inject -f src/main/docker/piano_01.yaml)
-kubectl apply -f <(istioctl kube-inject -f src/main/docker/piano_02.yaml)
+kubectl apply -f <(istioctl kube-inject -f src/main/docker/piano1.yaml)
+kubectl apply -f <(istioctl kube-inject -f src/main/docker/piano2.yaml)
 
-## Service:
+## Service: not needee anymore because it is contained in the mircoservice
 kubectl apply -f <(istioctl kube-inject -f src/main/docker/service_piano_01.yaml)
 kubectl apply -f <(istioctl kube-inject -f src/main/docker/service_piano_02.yaml)
+
+# switch namespace 
+gcloud container clusters get-credentials istio-k8s-cluster-2 --zone  us-central1-a --project hack-istio-2019
+
+# name
+Peter Gabriel  Jörg Tobi Mikhail Johannes Tobias Raphael

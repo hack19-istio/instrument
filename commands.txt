@@ -5,3 +5,7 @@
 kubectl apply -f <(istioctl kube-inject -f src/main/docker/deploy.yaml)
 
 kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=$(../../google-cloud-sdk/bin/gcloud config get-value core/account)
+
+../../google-cloud-sdk/bin/gcloud container clusters get-credentials istio-k8s-cluster-2 --zone  us-central1-a --project hack-istio-2019
+
+kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=$(../../google-cloud-sdk/bin/gcloud config get-value core/account)
