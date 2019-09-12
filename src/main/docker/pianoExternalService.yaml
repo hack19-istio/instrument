@@ -1,8 +1,0 @@
-kind: Service
-apiVersion: v1
-metadata:
-  name: piano
-  namespace: hack-istio-player-backend
-spec:
-  type: ExternalName
-  externalName: piano.hack-istio-instruments.svc.cluster.local
