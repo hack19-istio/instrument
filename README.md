@@ -33,5 +33,12 @@ kubectl apply -f <(istioctl kube-inject -f src/main/docker/service_piano_02.yaml
 # switch namespace 
 gcloud container clusters get-credentials istio-k8s-cluster-2 --zone  us-central1-a --project hack-istio-2019
 
+gcloud container clusters get-credentials istio-k8s-cluster-3 --zone  us-central1-a --project hack-istio-2019
+
+# for testing loadbalancing using following files
+*-deploy.yaml
+*ExternalServices.yaml
+*Service.yaml
+
 # name
 Peter Gabriel  Jörg Tobi Mikhail Johannes Tobias Raphael

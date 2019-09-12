@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: hack-istio-instruments
+  name: pad1
+  labels:
+    app: pad1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pad
+      type: pad1
+  template:
+    metadata:
+      labels:
+        app: pad
+        type: pad1
+    spec:
+      serviceAccountName: instruments-sa
+      containers:
+        - name: pad1
+          image: gregerrag/istio-instrument
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TZ
+              value: Europe/Zurich
+            - name: INSTRUMENT_ID
+              value: "pad1"
